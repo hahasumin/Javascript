@@ -75,19 +75,41 @@ const students = [
 console.clear();
 // Q9. compute students' average score
 {
-  const result = student.reduce((prev, curr) => {
+  const result = students.reduce((prev, curr) => {
     console.log("---------");
     console.log(prev);
     console.log(curr);
-  });
+    return prev + curr.score;
+  }, 0);
+  console.log(result / students.length);
 }
+// reduce = 원하는 시작점 부터 모든 배열을 돌면서 어떤 값을 누적할때 쓰는 API
 
 // Q10. make a string containing all the scores
 // result should be: '45, 80, 90, 66, 88'
 {
+  const result = students
+    .map((student) => student.score)
+    .filter((score) => score >= 50)
+    .join();
+  console.log(result);
 }
 
 // Bonus! do Q10 sorted in ascending order
 // result should be: '45, 66, 80, 88, 90'
 {
+  const result = students
+    .map((student) => student.score)
+    .sort((a, b) => a - b)
+    .join();
+  console.log(result);
+}
+
+// result should be: '90, 88, 80 , 66, 45'
+{
+  const result = students
+    .map((student) => student.score)
+    .sort((a, b) => b - a)
+    .join();
+  console.log(result);
 }
